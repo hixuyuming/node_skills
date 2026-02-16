@@ -46,6 +46,11 @@ Git workflow expertise:
 
 GitHub operations via gh CLI:
 - Create/manage PRs with proper templates
+- Open PRs with explicit base/head and structured content, e.g. `gh pr create --base main --head <branch> --title "<title>" --body-file <file>`
+- Prefer `--body-file` (or stdin with `--body-file -`) for multi-line PR bodies to avoid broken escaping
+- If inline body text is required, use shell-safe newlines (e.g. Bash ANSI-C quoting `$'line1\n\nline2'`) instead of raw `\n`
+- After opening a PR, wait for CI with `gh pr checks <num> --watch 2>&1` and proactively fix failures
+- Validate unfamiliar gh commands first with `gh help <command>` before using them in guidance
 - Handle issues and project boards
 - Manage releases and artifacts
 - Configure repository settings
